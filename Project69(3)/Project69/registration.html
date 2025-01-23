@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">JaalSaafTech</div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <!-- <a href="#Awareness">Awareness</a>
+                <a href="#WaterScarcityMap">WaterScarcity Map</a>
+                <a href="about.html">About Us</a>
+                <a href="#login">Login</a>
+                <a href="registration.html">Register</a> -->
+            </div>
+        </div>
+
+        <div class="regisForm">
+            <div class="icons">
+                <i class="fas fa-users"></i>
+                <h2>Create your account</h2>
+                <p>Already have account? <a href="^&*">Sign in</a></p>
+            </div>
+            <div class="form">
+                <form id="registrationForm" action="&**9">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="form-group" id="btn">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            
+            // You can add form validation here if needed
+            
+            // Show the alert
+            alert('Registered successfully');
+            
+            // Optionally, you can reset the form after successful registration
+            this.reset();
+        });
+    </script>
+</body>
+</html>

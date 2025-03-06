@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Water Conservation Efforts</title>
+    <style>
+        body,html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #3542f1; */
+    height: 40px;
+    /* padding: 5px; */
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:18px;
+    padding: 5px 40px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        section h2{
+            color:#0a5983
+        }
+
+        .efforts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .effort-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            min-width: 300px;
+        }
+
+        .effort-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .effort-item .content {
+            padding: 15px;
+        }
+
+        .effort-item .content h2 {
+            font-size: 1.5em;
+            margin: 0 0 10px;
+        }
+
+        .effort-item .content p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .effort-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .effort-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">JaalSaafTech</div>
+            <!-- <input type="checkbox" id="menu-toggle" class="menu-toggle"> -->
+            <!-- <label for="menu-toggle" class="menu-icon"> -->
+             
+            <!-- </label> -->
+            <div class="nav-links">
+                <a href="index.html" class="part4">Home</a>
+            </div>
+        </div>
+        <h1>Global Water Conservation Efforts</h1>
+    </header>
+
+    <section>
+        <h2>Preserving Our Planet's Most Precious Resource</h2>
+        <p>Learn about innovative global initiatives aimed at conserving water and ensuring sustainability for future generations.</p>
+
+        <div class="efforts">
+            <div class="effort-item">
+                <img src="rainWaterHarvesting.jpg" alt="Rainwater Harvesting">
+                <div class="content">
+                    <h2>Rainwater Harvesting</h2>
+                    <p>Communities worldwide are adopting rainwater harvesting systems to collect and store rain for agricultural and household use.</p>
+                </div>
+            </div>
+
+            <div class="effort-item">
+                <img src="dripSystem.jpg" alt="Drip Irrigation">
+                <div class="content">
+                    <h2>Drip Irrigation</h2>
+                    <p>This efficient irrigation method minimizes water wastage by delivering water directly to plant roots.</p>
+                </div>
+            </div>
+
+            <div class="effort-item">
+                <img src="desalinationProject.avif" alt="Desalination Plants">
+                <div class="content">
+                    <h2>Desalination Plants</h2>
+                    <p>Countries with limited freshwater resources are investing in desalination technology to convert seawater into potable water.</p>
+                </div>
+            </div>
+
+            <div class="effort-item">
+                <img src="wetlandResoration.jpg" alt="Wetland Restoration">
+                <div class="content">
+                    <h2>Wetland Restoration</h2>
+                    <p>Efforts to restore wetlands help improve water quality, support biodiversity, and regulate water cycles.</p>
+                </div>
+            </div>
+
+            <div class="effort-item">
+                <img src="waterecyle.jpg" alt="Water Recycling">
+                <div class="content">
+                    <h2>Water Recycling</h2>
+                    <p>Advanced recycling systems treat wastewater for reuse in industrial, agricultural, and even potable applications.</p>
+                </div>
+            </div>
+
+            <div class="effort-item">
+                <img src="water-conservation-community.jpg" alt="Community Education">
+                <div class="content">
+                    <h2>Community Education</h2>
+                    <p>Educational programs worldwide are raising awareness about water conservation practices and sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

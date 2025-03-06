@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JalSaafTech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 230vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3542f1;
+            height: 40px;
+            padding: 5px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* .navbar .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        } */
+
+        .navbar .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-icon span {
+            display: block;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #fff;
+            color: #3542f1;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #3542f1;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .menu-toggle:checked~.nav-links {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .menu-toggle:checked+.menu-icon span:nth-child(1) {
+                transform: rotate(45deg) translateY(8px);
+            }
+
+            .menu-toggle:checked+.menu-icon span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle:checked+.menu-icon span:nth-child(3) {
+                transform: rotate(-45deg) translateY(-8px);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .background-container {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content1 {
+            text-align: center;
+            margin-top: -20vh;
+            animation: slideIn 2s ease-out;
+        }
+
+        .headings {
+            margin: 0;
+            font-size: 40px;
+            line-height: 75px;
+            font-weight: 700;
+            color: white;
+            animation: slideIn 2s ease-out;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .paragraph {
+            margin: 0;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 400;
+            color: white;
+            animation: slideIn 2s ease-out;
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .container2 {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 10vh;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            min-width: 350px;
+            transition: transform 0.2s ease;
+            animation: slideInRight 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) {
+            background-color: #fff1f2;
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            background-color: #fff;
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(3) {
+            background-color: #f0f7ff;
+            animation-delay: 0.5s;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 1rem;
+        }
+
+        .icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .card:nth-child(1) .number {
+            color: #ff4444;
+        }
+
+        .card:nth-child(2) .number {
+            color: #dc994c;
+        }
+
+        .card:nth-child(3) .number {
+            color: #0066ff;
+        }
+
+        .text {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .city-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            margin-top: 10vh;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .city-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            animation: slideInLeft 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .city-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .city-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .city-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .city-card:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        .city-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .city-content {
+            padding: 1.5rem;
+        }
+
+        .risk-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .risk-high {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .risk-medium {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .city-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .city-description {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .view-details-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .view-details-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .modal-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .location-icon {
+            width: 20px;
+            height: 20px;
+            fill: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .city-cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">JalSaafTech</div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="https://phenomenal-babka-30e59f.netlify.app/">Awareness</a>
+                <a href="waterscarcity.html">WaterScarcity Map</a>
+                <a href="about.html">About Us</a>
+                <a href="product.html">Product</a>
+                <a href="registration.html">Register</a>
+            </div>
+        </div>
+        <div class="background-container">
+            <div class="content1">
+                <div class="headings">
+                    <h1>Water Scarcity Map</h1>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        Explore regions around the world facing critical water scarcity challenges and learn about their
+                        unique situations and solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="#ff4444">
+                        <path
+                            d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="number">17</div>
+                <p class="text">Countries Under Extreme Water Stress</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="#ff8800">
+                        <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z" />
+                    </svg>
+                </div>
+                <div class="number">25%</div>
+                <p class="text">Population Faces Water Scarcity</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" fill="#0066ff">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                    </svg>
+                </div>
+                <div class="number">2025</div>
+                <p class="text">Year When 2/3 Will Face Water Stress</p>
+            </div>
+        </div>
+        <div class="city-cards-container">
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&q=80"
+                    alt="Cape Town" class="city-image">
+                <div class="city-content">
+                    <span class="risk-badge risk-high">High Risk</span>
+                    <h3 class="city-name">
+                        <svg class="location-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Cape Town, South Africa
+                    </h3>
+                    <p class="city-description">Faced severe water crisis in 2018 with 'Day Zero' approaching</p>
+                    <button class="view-details-btn" onclick="openModal('cape-town')">View Details
+                        <span>→</span></button>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80"
+                    alt="Chennai" class="city-image">
+                <div class="city-content">
+                    <span class="risk-badge risk-high">High Risk</span>
+                    <h3 class="city-name">
+                        <svg class="location-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Chennai, India
+                    </h3>
+                    <p class="city-description">Experiencing recurring water shortages due to rapid urbanization</p>
+                    <button class="view-details-btn" onclick="openModal('chennai')">View Details <span>→</span></button>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.pexels.com/photos/15036815/pexels-photo-15036815/free-photo-of-a-sunset-over-the-water-with-a-church-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="São Paulo" class="city-image">
+                <div class="city-content">
+                    <span class="risk-badge risk-medium">Medium Risk</span>
+                    <h3 class="city-name">
+                        <svg class="location-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        São Paulo, Brazil
+                    </h3>
+                    <p class="city-description">Faced major water crisis due to drought and deforestation</p>
+                    <button class="view-details-btn" onclick="openModal('sao-paulo')">View Details
+                        <span>→</span></button>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&q=80"
+                    alt="Mexico City" class="city-image">
+                <div class="city-content">
+                    <span class="risk-badge risk-high">High Risk</span>
+                    <h3 class="city-name">
+                        <svg class="location-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM12 11.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Mexico City, Mexico
+                    </h3>
+                    <p class="city-description">Struggling with water scarcity due to over-extraction</p>
+                    <button class="view-details-btn" onclick="openModal('mexico-city')">View Details
+                        <span>→</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <img id="modal-image" src="/placeholder.svg" alt="" class="modal-image">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <p id="modal-description" class="modal-description"></p>
+            </div>
+        </div>
+
+        <script>
+            const cityData = {
+                'cape-town': {
+                    title: 'Cape Town, South Africa',
+                    image: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&q=80',
+                    description: [
+                        "Cape Town faced one of its most severe water crises in 2018, nearly becoming the first major city to run out of water.",
+                        "Key Impacts:",
+                        "- Severe water restrictions (50L per person per day)",
+                        "- Economic impact on tourism and agriculture",
+                        "- Implementation of emergency water management plans",
+                        "Current Status:",
+                        "- The city has recovered through rainfall, reduced consumption, and improved water management strategies."
+                    ]
+                },
+                'chennai': {
+                    title: 'Chennai, India',
+                    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80',
+                    description: [
+                        "Chennai faces recurring water shortages due to rapid urbanization, climate change, and inadequate infrastructure.",
+                        "Key Challenges:",
+                        "- Depleting groundwater levels",
+                        "- Inadequate rainfall",
+                        "- Poor water infrastructure",
+                        "- Rapid population growth",
+                        "Current Initiatives:",
+                        "- Rainwater harvesting programs",
+                        "- Desalination plants",
+                        "- Water recycling projects"
+                    ]
+                },
+                'sao-paulo': {
+                    title: 'São Paulo, Brazil',
+                    image: 'https://images.pexels.com/photos/15036815/pexels-photo-15036815/free-photo-of-a-sunset-over-the-water-with-a-church-in-the-background.jpeg?auto=compress&cs=tinysrgb&w=600',
+                    description: [
+                        "São Paulo experienced a major water crisis due to drought, deforestation, and poor water management.",
+                        "Contributing Factors:",
+                        "- Amazon deforestation affecting rainfall patterns",
+                        "- Aging infrastructure and water loss",
+                        "- Population growth",
+                        "- Climate change",
+                        "Solutions Implemented:",
+                        "- Water conservation programs",
+                        "- Infrastructure improvements",
+                        "- Environmental protection measures"
+                    ]
+                },
+                'mexico-city': {
+                    title: 'Mexico City, Mexico',
+                    image: 'https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&q=80',
+                    description: [
+                        "Mexico City faces severe water scarcity issues due to over-extraction of groundwater and rapid urban growth.",
+                        "Major Issues:",
+                        "- Ground subsidence due to water extraction",
+                        "- Aging infrastructure",
+                        "- Inequitable water distribution",
+                        "- Water quality concerns",
+                        "Ongoing Solutions:",
+                        "- Water conservation programs",
+                        "- Infrastructure modernization",
+                        "- Rainwater harvesting initiatives"
+                    ]
+                }
+            };
+
+            function openModal(cityId) {
+                const modal = document.getElementById('modal');
+                const modalImage = document.getElementById('modal-image');
+                const modalTitle = document.getElementById('modal-title');
+                const modalDescription = document.getElementById('modal-description');
+
+                const cityInfo = cityData[cityId];
+
+                modalImage.src = cityInfo.image;
+                modalImage.alt = cityInfo.title;
+                modalTitle.textContent = cityInfo.title;
+
+                modalDescription.innerHTML = '';
+                const descriptionList = document.createElement('ul');
+                cityInfo.description.forEach(point => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = point;
+                    descriptionList.appendChild(listItem);
+                });
+
+                modalDescription.appendChild(descriptionList);
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            window.onclick = function (event) {
+                const modal = document.getElementById('modal');
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function handleScroll() {
+                var cards = document.querySelectorAll('.card, .city-card');
+                cards.forEach(function (card) {
+                    if (isElementInViewport(card)) {
+                        card.style.animationPlayState = 'running';
+                    }
+                });
+            }
+
+
+
+
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('load', handleScroll);
+        </script>
+    </div>
+</body>
+
+</html>

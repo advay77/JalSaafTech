@@ -1,0 +1,188 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    height: 110vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3542f1;
+    height: 40px;
+    padding: 5px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* .navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+} */
+
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon span {
+    display: block;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:18px;
+    padding: 5px 40px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #fff;
+    color: #3542f1;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+}
+.regisForm{
+    height: 100vh;
+    width: 30%;
+    /* background-color: aquamarine; */
+    margin-top: 5rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+.regisForm .icons{
+    height:10vh;
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: 2px;
+    margin-bottom: 1rem;
+  
+  
+    /* color: #2563eb; */
+  
+}
+
+.regisForm .icons i{
+    font-size: 20px;
+    color: #2563eb;
+    /* margin-bottom: 10px; */
+}
+.regisForm .form{
+    height: 80vh;
+    width: 100%;
+    /* background-color: purple; */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.form-group{
+    height:12vh;
+    width: 100%;
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.2rem;
+    justify-content: space-evenly;
+  
+}
+.form-group label{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-group input{
+   
+    height:6vh;
+    width: 85%;
+    margin-left: 1.5rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);  */
+    outline: rgb(187, 183, 183);
+    border: 1px solid rgb(178, 173, 173);
+}
+.form-group button{
+    height:6vh;
+    width: 70%;
+    background-color: #3542f1;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 3.7rem;
+}
+.form-group button:focus{
+    transition:  0.3s, transform 0.3s;
+    background-color: #fff;
+    color: #3542f1;
+    border: 1px solid #3542f1;
+   
+}
+
+.form-group input:focus{
+    outline: #3542f1;
+    border: 1px solid #3542f1;
+}
+
+
+
+

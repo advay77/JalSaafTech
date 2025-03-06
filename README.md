@@ -17,11 +17,7 @@ JalSaafTech is a project dedicated to promoting water conservation and managemen
 To get started with JalSaafTech, clone the repository and open the HTML files in your browser.
 
 ## 😎 Preview
-
- ![Screenshot 2024-10-18 191848](https://github.com/user-attachments/assets/d1cf2626-42a8-447d-bbff-a5c8dbefb0b4)
-
-
-
+![Screenshot 2025-03-06 230852](https://github.com/user-attachments/assets/5fe598e1-0b92-408a-aef7-5d3cf31ba089)
 
 ```bash
 git clone https://github.com/advay77/JalSaafTech.git
